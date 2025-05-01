@@ -3,71 +3,71 @@ from tkinter import filedialog, messagebox
 import os
 import shutil
 
-# دالة لاختيار مجلد لحفظ الملف
+# Function to choose the folder to save the file
 def choose_save_folder():
-    folder_selected = filedialog.askdirectory(title="اختر المجلد لحفظ الملف")
+    folder_selected = filedialog.askdirectory(title="Choose the folder to save the file")
     return folder_selected
 
-# دالة فك التشفير
+# Function to decrypt the file
 def decrypt_file():
     file_path = file_path_entry.get()
     if not file_path:
-        messagebox.showerror("خطأ", "من فضلك اختر ملفًا للتشفير")
+        messagebox.showerror("Error", "Please select a file to decrypt")
         return
     
     try:
-        # تحديد مكان الحفظ
+        # Choose the save folder
         save_folder = choose_save_folder()
         if not save_folder:
-            messagebox.showerror("خطأ", "من فضلك اختر مجلد لحفظ الملف")
+            messagebox.showerror("Error", "Please select a folder to save the file")
             return
 
-        # منطق فك التشفير: هنا يجب استبدال الكود بنظام فك التشفير الفعلي
-        # على سبيل المثال: decrypt_file_logic(file_path)
+        # Decryption logic: replace this with actual decryption logic
+        # For example: decrypt_file_logic(file_path)
 
-        # افترض أن الملف تم فك تشفيره وحفظه في نفس المجلد
+        # Assuming the file was decrypted and saved in the same folder
         decrypted_file_path = os.path.join(save_folder, "decrypted_file.txt")
-        shutil.copy(file_path, decrypted_file_path)  # نقل الملف المشفر إلى الملف المفكوك
+        shutil.copy(file_path, decrypted_file_path)  # Copy the encrypted file to the decrypted file
 
-        # إشعار بالنجاح
-        messagebox.showinfo("نجاح", f"تم فك تشفير الملف وحفظه في: {decrypted_file_path}")
+        # Success message
+        messagebox.showinfo("Success", f"The file has been decrypted and saved at: {decrypted_file_path}")
     except Exception as e:
-        messagebox.showerror("خطأ", f"حدث خطأ أثناء فك التشفير: {str(e)}")
+        messagebox.showerror("Error", f"An error occurred during decryption: {str(e)}")
 
-# دالة لاختيار الملف
+# Function to browse the file
 def browse_file():
     filename = filedialog.askopenfilename(filetypes=[("Encrypted Files", "*.enc")])
     file_path_entry.delete(0, tk.END)
     file_path_entry.insert(0, filename)
 
-# إعداد واجهة المستخدم
+# Setting up the UI
 window = tk.Tk()
-window.title("أداة فك تشفير ملفات بايثون")
+window.title("Python File Decryption Tool")
 window.geometry("450x400")
-window.config(bg="#2b2b2b")  # خلفية داكنة
+window.config(bg="#2b2b2b")  # Dark background
 
-# العنوان
-title_label = tk.Label(window, text="أداة فك تشفير الملفات", font=("Helvetica", 16), bg="#2b2b2b", fg="#ffffff")
+# Title
+title_label = tk.Label(window, text="File Decryption Tool", font=("Helvetica", 16), bg="#2b2b2b", fg="#ffffff")
 title_label.pack(pady=20)
 
-# إدخال المسار
-file_path_label = tk.Label(window, text="مسار الملف المشفر:", font=("Helvetica", 12), bg="#2b2b2b", fg="#ffffff")
+# File path input
+file_path_label = tk.Label(window, text="Encrypted File Path:", font=("Helvetica", 12), bg="#2b2b2b", fg="#ffffff")
 file_path_label.pack(pady=5)
 
 file_path_entry = tk.Entry(window, font=("Helvetica", 12), width=40)
 file_path_entry.pack(pady=5)
 
-# زر اختيار الملف
-browse_button = tk.Button(window, text="اختيار ملف", font=("Helvetica", 12), command=browse_file)
+# Browse button
+browse_button = tk.Button(window, text="Choose File", font=("Helvetica", 12), command=browse_file)
 browse_button.pack(pady=10)
 
-# زر فك التشفير
-decrypt_button = tk.Button(window, text="فك التشفير", font=("Helvetica", 12), bg="#4CAF50", fg="white", command=decrypt_file)
+# Decrypt button
+decrypt_button = tk.Button(window, text="Decrypt", font=("Helvetica", 12), bg="#4CAF50", fg="white", command=decrypt_file)
 decrypt_button.pack(pady=20)
 
-# إضافة حقوق المستخدم
+# Footer with user rights
 footer_label = tk.Label(window, text="𝑫𝑨𝑹𝑲 𝑯𝑨𝑪𝑲𝑬𝑹", font=("Helvetica", 10), bg="#2b2b2b", fg="#ffffff")
 footer_label.pack(side=tk.BOTTOM, pady=10)
 
-# تشغيل التطبيق
+# Run the application
 window.mainloop()
