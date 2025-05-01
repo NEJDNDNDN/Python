@@ -3,71 +3,70 @@ from tkinter import filedialog, messagebox
 import os
 import shutil
 
-# Function to choose the folder to save the file
+# دالة لاختيار مجلد لحفظ الملف
 def choose_save_folder():
-    folder_selected = filedialog.askdirectory(title="Choose the folder to save the file")
+    folder_selected = filedialog.askdirectory(title="اختر المجلد لحفظ الملف")
     return folder_selected
 
-# Function to decrypt the file
+# دالة فك التشفير
 def decrypt_file():
     file_path = file_path_entry.get()
     if not file_path:
-        messagebox.showerror("Error", "Please select a file to decrypt")
+        messagebox.showerror("خطأ", "من فضلك اختر ملفًا للتشفير")
         return
-    
+
     try:
-        # Choose the save folder
+        # تحديد مكان الحفظ
         save_folder = choose_save_folder()
         if not save_folder:
-            messagebox.showerror("Error", "Please select a folder to save the file")
+            messagebox.showerror("خطأ", "من فضلك اختر مجلد لحفظ الملف")
             return
 
-        # Decryption logic: replace this with actual decryption logic
-        # For example: decrypt_file_logic(file_path)
-
-        # Assuming the file was decrypted and saved in the same folder
+        # منطق فك التشفير: هنا يتم استبدال هذا الجزء بما يناسب فك التشفير الفعلي
         decrypted_file_path = os.path.join(save_folder, "decrypted_file.txt")
-        shutil.copy(file_path, decrypted_file_path)  # Copy the encrypted file to the decrypted file
+        
+        # هذه فقط محاكاة لفك التشفير: نسخ الملف إلى مكان آخر
+        shutil.copy(file_path, decrypted_file_path)
 
-        # Success message
-        messagebox.showinfo("Success", f"The file has been decrypted and saved at: {decrypted_file_path}")
+        # إشعار بالنجاح
+        messagebox.showinfo("نجاح", f"تم فك تشفير الملف وحفظه في: {decrypted_file_path}")
     except Exception as e:
-        messagebox.showerror("Error", f"An error occurred during decryption: {str(e)}")
+        messagebox.showerror("خطأ", f"حدث خطأ أثناء فك التشفير: {str(e)}")
 
-# Function to browse the file
+# دالة لاختيار الملف
 def browse_file():
     filename = filedialog.askopenfilename(filetypes=[("Encrypted Files", "*.enc")])
     file_path_entry.delete(0, tk.END)
     file_path_entry.insert(0, filename)
 
-# Setting up the UI
+# إعداد واجهة المستخدم
 window = tk.Tk()
-window.title("Python File Decryption Tool")
+window.title("أداة فك تشفير ملفات بايثون")
 window.geometry("450x400")
-window.config(bg="#2b2b2b")  # Dark background
+window.config(bg="#2b2b2b")  # خلفية داكنة
 
-# Title
-title_label = tk.Label(window, text="File Decryption Tool", font=("Helvetica", 16), bg="#2b2b2b", fg="#ffffff")
+# العنوان
+title_label = tk.Label(window, text="أداة فك تشفير الملفات", font=("Helvetica", 16), bg="#2b2b2b", fg="#ffffff")
 title_label.pack(pady=20)
 
-# File path input
-file_path_label = tk.Label(window, text="Encrypted File Path:", font=("Helvetica", 12), bg="#2b2b2b", fg="#ffffff")
+# إدخال المسار
+file_path_label = tk.Label(window, text="مسار الملف المشفر:", font=("Helvetica", 12), bg="#2b2b2b", fg="#ffffff")
 file_path_label.pack(pady=5)
 
 file_path_entry = tk.Entry(window, font=("Helvetica", 12), width=40)
 file_path_entry.pack(pady=5)
 
-# Browse button
-browse_button = tk.Button(window, text="Choose File", font=("Helvetica", 12), command=browse_file)
+# زر اختيار الملف
+browse_button = tk.Button(window, text="اختيار ملف", font=("Helvetica", 12), command=browse_file)
 browse_button.pack(pady=10)
 
-# Decrypt button
-decrypt_button = tk.Button(window, text="Decrypt", font=("Helvetica", 12), bg="#4CAF50", fg="white", command=decrypt_file)
+# زر فك التشفير
+decrypt_button = tk.Button(window, text="فك التشفير", font=("Helvetica", 12), bg="#4CAF50", fg="white", command=decrypt_file)
 decrypt_button.pack(pady=20)
 
-# Footer with user rights
+# إضافة حقوق المستخدم
 footer_label = tk.Label(window, text="𝑫𝑨𝑹𝑲 𝑯𝑨𝑪𝑲𝑬𝑹", font=("Helvetica", 10), bg="#2b2b2b", fg="#ffffff")
 footer_label.pack(side=tk.BOTTOM, pady=10)
 
-# Run the application
+# تشغيل التطبيق
 window.mainloop()
