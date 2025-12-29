@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="Ahmed Mahmoud" />
+    <meta name="copyright" content="Ahmed Mahmoud" />
+    <title>Palestine: The Timeless Land</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Cairo', 'sans-serif'],
+              serif: ['Amiri', 'serif'], // Arabic Serif
+              classic: ['Crimson Text', 'serif'], // English Historical
+              display: ['Cinzel', 'serif'], // English Headlines
+            },
+            colors: {
+              palestine: {
+                green: '#007A3D',
+                red: '#CE1126',
+                black: '#000000',
+                white: '#FFFFFF',
+                sand: '#f3e5ab',
+                olive: '#3b4d32',
+                clay: '#b35d45',
+                gold: '#D4AF37',
+                paper: '#e6dcc6', // Tea stained base
+                ink: '#2c241b'    // Old Ink color
+              }
+            },
+            backgroundImage: {
+              'tatreez': "url('https://www.transparenttextures.com/patterns/arabesque.png')",
+              'parchment': "url('https://www.transparenttextures.com/patterns/aged-paper.png')"
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'reveal': 'reveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+              'fade-up': 'fadeUp 0.8s ease-out forwards',
+              'zoom-in': 'zoomIn 0.5s ease-out forwards',
+              'slide-in-right': 'slideInRight 0.6s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              reveal: {
+                '0%': { opacity: '0', transform: 'translateY(50px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              zoomIn: {
+                '0%': { opacity: '0', transform: 'scale(0.95)' },
+                '100%': { opacity: '1', transform: 'scale(1)' }
+              },
+              slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(20px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a1a1a;
+        -webkit-font-smoothing: antialiased;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      .tatreez-border {
+        background-image: linear-gradient(90deg, #CE1126 25%, #000 25%, #000 50%, #007A3D 50%, #007A3D 75%, #FFF 75%);
+        background-size: 40px 4px;
+      }
+      /* Old Paper Effect */
+      .old-paper {
+        background-color: #e8dcc5;
+        background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+        box-shadow: inset 0 0 40px rgba(60, 40, 10, 0.15);
+        color: #3b2f20;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.32.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
